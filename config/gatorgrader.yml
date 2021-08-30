@@ -1,0 +1,39 @@
+---
+name: sos-week-checkpoint
+break: true
+indent: 4
+---
+
+# Learn more about GatorGrader and its supported checks by visiting this web site:
+# https://github.com/GatorEducator/gatorgrader
+
+# Explanation:
+# --> a check without an "--exact" runs a count for an entity as an "at least"
+# --> checks below a file in a specified directory are for that specific file and directory
+# --> checks that appear stand-alone are for an entire Git repository
+
+# --> check the Python program
+rocket/rocket/main.py:
+    ConfirmFileExists
+    MatchFileFragment --fragment "TODO" --count 0 --exact
+    CountMultipleLineComments --language Python --count 3
+    CountSingleLineComments --language Python --count 4
+
+# --> check the Python program
+rocket/tests/test_rocket.py:
+    ConfirmFileExists
+    MatchFileFragment --fragment "TODO" --count 0 --exact
+    MatchFileFragment --fragment "test_" --count 2
+    CountMultipleLineComments --language Python --count 3
+
+# --> check the technical writing for various characteristics
+writing/reflection.md:
+    ConfirmFileExists
+    CountFileWords --count 200
+    CountMarkdownTags --tag "heading" --count 8
+    CountMarkdownTags --tag "code_block" --count 5
+    MatchFileFragment --fragment "TODO" --count 0 --exact
+    MatchFileFragment --fragment "Add Your Name Here" --count 0 --exact
+
+# --> check that the number of commits in the Git repository is beyond a threshold
+CountCommits --count 5
